@@ -1,10 +1,10 @@
-USE taxation_db;
+USE taxpaydb;
 
-SELECT t.taxpayer_name, r.income_source 
+SELECT t.fullname, r.income_source 
 FROM Taxpayer t 
 INNER JOIN Income_Record r ON t.taxpayer_id = r.taxpayer_id;
 
-SELECT t.taxpayer_name, c.category_name 
+SELECT t.full_name, c.category_name 
 FROM Taxpayer t 
 INNER JOIN Income_Record r ON t.taxpayer_id = r.taxpayer_id 
 INNER JOIN Income_Category c ON r.category_id = c.category_id;
@@ -13,23 +13,23 @@ SELECT r.record_id, f.financial_year
 FROM Income_Record r 
 INNER JOIN Financial_Year f ON r.year_id = f.year_id;
 
-SELECT t.taxpayer_name, r.annual_income, r.income_amount 
+SELECT t.full_name, r.annual_income, r.income_amount 
 FROM Taxpayer t 
 INNER JOIN Income_Record r ON t.taxpayer_id = r.taxpayer_id;
 
-SELECT t.taxpayer_name, r.income_source, c.category_name, f.financial_year 
+SELECT t.full_name, r.income_source, c.category_name, f.financial_year 
 FROM Income_Record r 
 INNER JOIN Taxpayer t ON r.taxpayer_id = t.taxpayer_id 
 INNER JOIN Income_Category c ON r.category_id = c.category_id 
 INNER JOIN Financial_Year f ON r.year_id = f.year_id;
 
-SELECT t.taxpayer_name, r.income_source 
+SELECT t.full_name, r.income_source 
 FROM Taxpayer t 
 INNER JOIN Income_Record r ON t.taxpayer_id = r.taxpayer_id 
 INNER JOIN Income_Category c ON r.category_id = c.category_id 
 WHERE c.category_name = 'Salary';
 
-SELECT t.taxpayer_name, t.occupation, r.income_source 
+SELECT t.full_name, t.occupation, r.income_source 
 FROM Taxpayer t 
 INNER JOIN Income_Record r ON t.taxpayer_id = r.taxpayer_id 
 INNER JOIN Income_Category c ON r.category_id = c.category_id 
