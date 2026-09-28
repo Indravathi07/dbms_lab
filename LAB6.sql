@@ -1,4 +1,4 @@
-USE taxation_db;
+USE taxpaydb;
 SHOW TABLES;
 
 SELECT * FROM taxpayer;
