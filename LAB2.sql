@@ -1,5 +1,4 @@
-CREATE DATABASE taxpaydb;
-USE taxation_db;
+USE taxpaydb;
 SELECT * FROM taxpayer;
 SELECT *FROM income_record;
 SELECT * FROM income_category;
