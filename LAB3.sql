@@ -1,4 +1,4 @@
-USE taxation_db;
+USE taxpaydb;
 
 SELECT UPPER(taxpayer_name) AS name_uppercase 
 FROM Taxpayer;
@@ -31,30 +31,30 @@ SELECT *
 FROM Taxpayer 
 WHERE pan_number LIKE 'AP%';
 
-SELECT ROUND(annual_income) AS rounded_income 
+SELECT ROUND(amount) AS rounded_income 
 FROM Income_Record;
 
-SELECT ABS(annual_income - 500000) AS absolute_difference 
+SELECT ABS(amount - 500000) AS absolute_difference 
 FROM Income_Record;
 
-SELECT POWER(annual_income, 2) AS squared_income 
+SELECT POWER(amount, 2) AS squared_income 
 FROM Income_Record;
 
-SELECT MOD(annual_income, 1000) AS income_remainder 
+SELECT MOD(amount, 1000) AS income_remainder 
 FROM Income_Record;
 
-SELECT ROUND(annual_income, 2) AS rounded_income_2dec 
+SELECT ROUND(amount, 2) AS rounded_income_2dec 
 FROM Income_Record;
 
-SELECT CEIL(annual_income) AS ceiling_income, FLOOR(annual_income) AS floor_income 
+SELECT CEIL(amount) AS ceiling_income, FLOOR(annual_income) AS floor_income 
 FROM Income_Record;
 
 SELECT FLOOR(1 + RAND() * 100) AS random_integer;
 
-SELECT SQRT(annual_income) AS sqrt_income 
+SELECT SQRT(amount) AS sqrt_income 
 FROM Income_Record;
 
-SELECT annual_income, (annual_income * 1.10) AS incremented_income 
+SELECT amount, (amount * 1.10) AS incremented_income 
 FROM Income_Record;
 
 SELECT CURDATE() AS todays_date;
@@ -86,7 +86,7 @@ SELECT *
 FROM Financial_Year 
 WHERE YEAR(start_date) = YEAR(CURDATE());
 
-SELECT CAST(annual_income AS SIGNED) AS integer_income 
+SELECT CAST(amount AS SIGNED) AS integer_income 
 FROM Income_Record;
 
 SELECT CAST(taxpayer_id AS CHAR) AS char_taxpayer_id 
@@ -95,11 +95,11 @@ FROM Taxpayer;
 SELECT CAST(start_date AS DATETIME) AS datetime_start 
 FROM Financial_Year;
 
-SELECT CAST(annual_income AS DECIMAL(15, 2)) AS decimal_income 
+SELECT CAST(amount AS DECIMAL(15, 2)) AS decimal_income 
 FROM Income_Record;
 
-SELECT CONVERT(annual_income, CHAR) AS string_income 
+SELECT CONVERT(amount, CHAR) AS string_income 
 FROM Income_Record;
 
-SELECT CAST(annual_income AS DECIMAL(15, 2)) * 0.20 AS calculated_tax 
+SELECT CAST(amount AS DECIMAL(15, 2)) * 0.20 AS calculated_tax 
 FROM Income_Record;
