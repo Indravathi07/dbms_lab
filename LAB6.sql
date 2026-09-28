@@ -190,26 +190,26 @@ WHERE category_id IN (
 
 SELECT *
 FROM Financial_Year
-WHERE financial_year_id IN (
-    SELECT financial_year_id
+WHERE year_id IN (
+    SELECT year_id
     FROM Income_Record
-    GROUP BY financial_year_id
+    GROUP BY year_id
     HAVING SUM(amount) = (
         SELECT MAX(total_income)
         FROM (
-            SELECT financial_year_id,
+            SELECT year_id,
                    SUM(amount) AS total_income
             FROM Income_Record
-            GROUP BY financial_year_id
+            GROUP BY year_id
         ) AS yearly_total
     )
 );
 
-SELECT t.taxpayer_id, t.name, SUM(i.amount) AS total_income
+SELECT t.taxpayer_id, t.full_name, SUM(i.amount) AS total_income
 FROM Taxpayer t
 JOIN Income_Record i
 ON t.taxpayer_id = i.taxpayer_id
-GROUP BY t.taxpayer_id, t.name
+GROUP BY t.taxpayer_id, t.full_name
 HAVING SUM(i.amount) > (
     SELECT AVG(total_income)
     FROM (
@@ -295,12 +295,12 @@ WHERE amount > ANY (
 );
 
 SELECT t.taxpayer_id,
-       t.name,
+       t.full_name,
        SUM(i.amount) AS total_income
 FROM Taxpayer t
 JOIN Income_Record i
 ON t.taxpayer_id = i.taxpayer_id
-GROUP BY t.taxpayer_id, t.name
+GROUP BY t.taxpayer_id, t.full_name
 HAVING SUM(i.amount) = (
     SELECT MAX(total_income)
     FROM (
