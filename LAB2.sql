@@ -1,4 +1,4 @@
-CREATE DATABASE taxation_db;
+CREATE DATABASE taxpaydb;
 USE taxation_db;
 SELECT * FROM taxpayer;
 SELECT *FROM income_record;
